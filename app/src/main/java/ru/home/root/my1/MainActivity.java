@@ -1,12 +1,15 @@
 package ru.home.root.my1;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class MainActivity extends Activity {
@@ -36,6 +39,8 @@ public class MainActivity extends Activity {
 
     public void btn1click(View view)    {
         txtView.setText("салют");
+        Toast tst=Toast.makeText(getApplicationContext(),"xxx",Toast.LENGTH_SHORT);
+        tst.show();
     }
     public void goAct(View view)
     {
@@ -45,5 +50,16 @@ public class MainActivity extends Activity {
         //int1.putExtra("editText3",txt3.getText());
 
         startActivity(int1);
+    }
+
+    public void getOrient(View view){
+        Configuration conf=getResources().getConfiguration();
+        Context ctx=getApplicationContext();
+
+        if (conf.orientation==conf.ORIENTATION_LANDSCAPE){
+            Toast.makeText(getApplicationContext(),"Альбомная",Toast.LENGTH_SHORT).show();}
+        else{
+            Toast.makeText(getApplicationContext(),"Портрет",Toast.LENGTH_SHORT).show();}
+
     }
 }
